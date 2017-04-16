@@ -9,31 +9,24 @@
 
 #### やったこと
 これをベースに進めました。
-https://ninenines.eu/docs/en/cowboy/1.0/guide/getting_started/
-
-```
-# 今回はErlangのバージョン管理に [asdf](https://github.com/asdf-vm/asdf) を使用
-
-brew install homebrew/dupes/make
-
-wget https://erlang.mk/erlang.mk
-make -f erlang.mk bootstrap bootstrap-rel
-
-# intellijのerlangプラグインをインストール
-# Project SDKのパスを `~/.asdf/installs/erlang/19.3` に設定。
-```
+- https://gist.github.com/flbuddymooreiv/ce1d7a47b12c27bf1616
+- https://ninenines.eu/docs/en/cowboy/1.0/guide/getting_started/
+- 今回はErlangのバージョン管理に [asdf](https://github.com/asdf-vm/asdf) を使用
+- intellijのerlangプラグインをインストール
+  - Project SDKのパスを `~/.asdf/installs/erlang/19.3` に設定。
 
 #### 起動
 
 ```
-make run
+rebar3 run
+
+# to stop
+put `q().` to erl shell and press `Enter`
 ```
 
 #### Routingの追加
 
 ```
-make new t=cowboy_http n=hello_handler
-
 # を実行しつつ、`src/play_with_cowboy_app.erl` の以下を更新する。
 Dispatch = cowboy_router:compile([
     {'_', [{"/", hello_handler, []}]}
